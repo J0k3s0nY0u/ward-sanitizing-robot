@@ -31,8 +31,19 @@ void Robot::exploreAndSanitize()
 
 void Robot::returnToBase()
 {
+	std::cout << "Returning to Base. \n";
+	auto path = pathPlanner.findPath(currentPosition, startPosition, map);
+	for (const auto& pos : path)
+	{
+		actuator.moveTo(pos);
+	}
+	currentPosition = startPosition;
 }
 
 void Robot::updateMapIfNeeded(Position newPos)
 {
+	if (sensor.detectObstacle(newPos))
+	{
+		map.updateMap(newPos, 1);
+	}
 }

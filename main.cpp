@@ -8,6 +8,7 @@
 #include "Sensor.h"
 #include "Actuator.h"
 #include "PathPlanner.h"
+#include "Robot.h"
 
 struct Position
 {
@@ -15,4 +16,11 @@ struct Position
 	int y;
 };
 
-int main() {}
+int main() {
+	Robot sanitizingRobot(20, 20);
+	sanitizingRobot.initialize();
+	sanitizingRobot.exploreAndSanitize();
+	sanitizingRobot.returnToBase();
+
+	return 0;
+}
