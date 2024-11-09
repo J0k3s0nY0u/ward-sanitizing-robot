@@ -4,8 +4,12 @@
 #include <vector>
 #include <queue>
 
+#include "Sensor.h"
+
 struct Position
 {
 	int x;
 	int y;
 };
+
+int main() {}
