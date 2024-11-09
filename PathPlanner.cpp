@@ -2,5 +2,7 @@
 
 std::vector<Position> PathPlanner::findPath(Position start, Position end, Map& map)
 {
-    return std::vector<Position>();
+    std::vector<Position> path;
+
+    return path;
 }
