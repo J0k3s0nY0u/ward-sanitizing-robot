@@ -6,5 +6,6 @@ class Actuator
 public:
 
 	void moveTo(Position pos);
+	void spraySanitizer();
 };
 

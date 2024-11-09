@@ -25,14 +25,26 @@
       <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="Actuator.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="PathPlanner.cpp">
+      <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sensor.h">
-      <Filter>Components</Filter>
-    </ClInclude>
     <ClInclude Include="Actuator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sensor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PathPlanner.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
