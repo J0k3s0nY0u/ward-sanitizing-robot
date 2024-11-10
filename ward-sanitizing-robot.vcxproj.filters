@@ -16,6 +16,9 @@
     <Filter Include="Components">
       <UniqueIdentifier>{2f71213e-51b2-41c9-bdb8-fe37c02d3650}</UniqueIdentifier>
     </Filter>
+    <Filter Include="External">
+      <UniqueIdentifier>{c57e23c2-d156-44bc-88ee-707a62d9d7c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
