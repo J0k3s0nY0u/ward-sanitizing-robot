@@ -1,8 +1,9 @@
 #include <iostream>
-#include <map>
-#include <cmath>
+
+#include <SFML/Graphics.hpp>
 #include <vector>
 #include <queue>
+#include <cmath>
 #include <algorithm>
 #include <unordered_map>
 
@@ -11,37 +12,7 @@
 #include "Actuator.h"
 #include "PathPlanner.h"
 #include "Robot.h"
-
-struct Position
-{
-	int x, y;
-	bool operator == (const Position& other) const {
-		return x == other.x && y == other.y;
-	}
-};
-
-struct PositionHash
-{
-	size_t operator()(const Position& pos) const {
-		return std::hash<int>()(pos.x) ^ std::hash<int>()(pos.y);
-	};
-};
-
-struct Node
-{
-	Position pos;
-	int g;
-	int h;
-	int f;
-	Position parent;
-};
-
-struct CompareNode
-{
-	bool operator()(const Node& a, const Node& b) {
-		return a.f > b.f;
-	}
-};
+#include "Variables.cpp"
 
 int main() {
 	Robot sanitizingRobot(20, 20);
