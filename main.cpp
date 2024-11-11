@@ -29,47 +29,36 @@ struct Position
 struct PositionHash
 {
     size_t operator()(const Position& pos) const {
-        return std::hash<int>()(pos.x) ^ std::hash<int>()(pos.y) << 1;
+        return std::hash<int>()(pos.x) ^ (std::hash<int>()(pos.y) << 1);
     };
 };//////
 
 // Display grid with path in SFML (for simulation)
 void displayGridWithPath(const std::vector<std::vector<int>>& grid, const std::vector<Position>& path, Position start, Position target) {
-    const int cellSize = 50; // Size of each cell in pixels
+    const float cellSize = 50.0f; // Cell size as float for SFML
     const int gridWidth = grid[0].size();
     const int gridHeight = grid.size();
 
-    sf::RenderWindow window(sf::VideoMode(gridWidth * cellSize, gridHeight * cellSize), "A* Pathfinding Visualization");
+    sf::RenderWindow window(sf::VideoMode(static_cast<int>(gridWidth * cellSize), static_cast<int>(gridHeight * cellSize)), "A* Pathfinding Visualization");
 
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
-                window.close();
+            if (event.type == sf::Event::Closed) window.close();
         }
 
         window.clear();
 
         for (int i = 0; i < gridHeight; ++i) {
             for (int j = 0; j < gridWidth; ++j) {
-                sf::RectangleShape cell(sf::Vector2f(cellSize - 1, cellSize - 1));
-                cell.setPosition(j * cellSize, i * cellSize);
+                sf::RectangleShape cell(sf::Vector2f(cellSize - 1.0f, cellSize - 1.0f));
+                cell.setPosition(static_cast<float>(j) * cellSize, static_cast<float>(i) * cellSize);
 
-                // Determine color based on grid cell content
-                if (grid[i][j] == 1) {
-                    cell.setFillColor(COLOR_OBSTACLE); // Obstacle
-                }
-                else {
-                    cell.setFillColor(COLOR_FREE); // Free space
-                }
+                if (grid[i][j] == 1) cell.setFillColor(COLOR_OBSTACLE);
+                else cell.setFillColor(COLOR_FREE);
 
-                // Mark start and end points
-                if (Position{ i, j } == start) {
-                    cell.setFillColor(COLOR_START);
-                }
-                else if (Position{ i, j } == target) {
-                    cell.setFillColor(COLOR_TARGET);
-                }
+                if (Position{ i, j } == start) cell.setFillColor(COLOR_START);
+                else if (Position{ i, j } == target) cell.setFillColor(COLOR_TARGET);
 
                 window.draw(cell);
             }
@@ -78,8 +67,8 @@ void displayGridWithPath(const std::vector<std::vector<int>>& grid, const std::v
         // Draw the path
         for (const auto& pos : path) {
             if (pos == start || pos == target) continue;
-            sf::RectangleShape cell(sf::Vector2f(cellSize - 1, cellSize - 1));
-            cell.setPosition(pos.y * cellSize, pos.x * cellSize);
+            sf::RectangleShape cell(sf::Vector2f(cellSize - 1.0f, cellSize - 1.0f));
+            cell.setPosition(static_cast<float>(pos.y) * cellSize, static_cast<float>(pos.x) * cellSize);
             cell.setFillColor(COLOR_PATH);
             window.draw(cell);
         }
