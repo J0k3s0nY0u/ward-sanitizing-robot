@@ -19,7 +19,6 @@ private:
 public:
 
 	PathPlanner(const std::vector<std::vector<int>>& grid);
-	std::vector<Position> findPath(Position start, Position end, Map& map);
 	std::vector<Position> findPath(Position start, Position target);
 };
 

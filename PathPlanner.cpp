@@ -44,13 +44,6 @@ PathPlanner::PathPlanner(const std::vector<std::vector<int>> &grid) : grid(grid)
 {
 }
 
-std::vector<Position> PathPlanner::findPath(Position start, Position end, Map& map)
-{
-    std::vector<Position> path;
-
-    return path;
-}
-
 std::vector<Position> PathPlanner::findPath(Position start, Position target)
 {
     std::priority_queue<Node, std::vector<Node>, CompareNode> openList;
