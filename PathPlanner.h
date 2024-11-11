@@ -4,6 +4,22 @@
 class PathPlanner
 {
 private:
+
+	// Node structure for A* algorithm
+	struct Node
+	{
+		Position pos;
+		int g; // cost from start to current node
+		int h; // heuristic cost from current node to target
+		int f; // total cost
+		Position parent; // parent node in the path
+	};
+
+	// Comparator for priority queue based on f cost
+	struct CompareNode {
+		bool operator()(const Node& a, const Node& b) { return a.f > b.f; }
+	};
+
 	std::vector<std::vector<int>> grid;
 
 	// Manhattan distance as heuristic

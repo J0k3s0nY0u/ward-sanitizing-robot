@@ -139,22 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Actuator.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Map.cpp" />
     <ClCompile Include="MotorController.cpp" />
     <ClCompile Include="PathPlanner.cpp" />
-    <ClCompile Include="Robot.cpp" />
     <ClCompile Include="SanitizerController.cpp" />
     <ClCompile Include="Sensor.cpp" />
-    <ClCompile Include="Variables.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Actuator.h" />
-    <ClInclude Include="Map.h" />
     <ClInclude Include="MotorController.h" />
     <ClInclude Include="PathPlanner.h" />
-    <ClInclude Include="Robot.h" />
     <ClInclude Include="SanitizerController.h" />
     <ClInclude Include="Sensor.h" />
   </ItemGroup>

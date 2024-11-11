@@ -27,42 +27,21 @@
     <ClCompile Include="Sensor.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="Actuator.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>Components</Filter>
-    </ClCompile>
     <ClCompile Include="PathPlanner.cpp">
       <Filter>Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Robot.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Variables.cpp">
-      <Filter>Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="MotorController.cpp">
       <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="SanitizerController.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Actuator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Sensor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="PathPlanner.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Robot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MotorController.h">

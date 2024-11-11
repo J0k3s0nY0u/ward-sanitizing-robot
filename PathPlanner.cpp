@@ -2,19 +2,17 @@
 
 int PathPlanner::heuristic(const Position& a, const Position& b)
 {
-    return abs(a.x - b.x) + abs(a.y - b.y);;
+    return std::abs(a.x - b.x) + std::abs(a.y - b.y); // Manhattan distance
 }
 
 std::vector<Position> PathPlanner::getNeighbors(const Position& pos)
 {
     std::vector<Position> neighbors;
-    std::vector<Position> possibleMoves = { {0, 1}, {1, 0}, {0, -1}, {-1, 0} }; // Right, Down, Left, Up
+    std::vector<Position> moves = { {0, 1}, {1, 0}, {0, -1}, {-1, 0} };
 
-    for (const auto& move : possibleMoves) {
+    for (const auto& move : moves) {
         Position neighbor = { pos.x + move.x, pos.y + move.y };
-        if (isInBounds(neighbor)) {
-            neighbors.push_back(neighbor);
-        }
+        if (isInBounds(neighbor)) neighbors.push_back(neighbor);
     }
     return neighbors;
 }
@@ -46,18 +44,20 @@ PathPlanner::PathPlanner(const std::vector<std::vector<int>> &grid) : grid(grid)
 
 std::vector<Position> PathPlanner::findPath(Position start, Position target)
 {
+    // Priority queue for A* search
     std::priority_queue<Node, std::vector<Node>, CompareNode> openList;
     std::unordered_map<Position, int, PositionHash> gCost;
     std::unordered_map<Position, Position, PositionHash> cameFrom;
 
+    // Initialize start node
     gCost[start] = 0;
-
     openList.push({ start, 0, heuristic(start, target), heuristic(start, target), {} });
 
     while (!openList.empty()) {
         Node current = openList.top();
         openList.pop();
 
+        // If we reached the target, reconstruct the path
         if (current.pos == target) {
             return reconstructPath(cameFrom, current.pos);
         }
@@ -74,6 +74,5 @@ std::vector<Position> PathPlanner::findPath(Position start, Position target)
             }
         }
     }
-
-    return {};
+    return {}; // Return an empty path if no path is found
 }
